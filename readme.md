@@ -4,11 +4,11 @@ in file <code>config.json</code> added discounts
 
 ```Json
 {   
-    //...
+    
     "perc_1": 1,
     "perc_3": 3,
     "perc_6": 6,
-    //...
+    
 }
 ```
 
