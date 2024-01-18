@@ -9,6 +9,7 @@ in file <code>config.json</code> added discounts
 ```
 
 we specify the part of the amount that the user must pay (interest is calculated automatically)
+<br>
 for example:
 
 <code>config.json</code>
