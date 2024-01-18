@@ -27,7 +27,7 @@ for example:
 }
 ```
 that is, when paying for 3 months, the user will actually pay for 2.85 months (5% discount)<br>
-and when paying for 6 months, the user will pay for 5.4 months (10%)<br>
+and when paying for 6 months, the user will pay for 5.4 months (10%)<br><br>
 in tg bot:
 <br>
 ![example](https://github.com/QueenDekim/telegram-wireguard-vpn-bot/raw/main/example.png)
