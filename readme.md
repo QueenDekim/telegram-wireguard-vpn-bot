@@ -8,7 +8,7 @@ in file <code>config.json</code> added discounts
     "perc_6": 6,
 ```
 
-we specify the part of the amount that the user must pay (interest is calculated automatically)
+we specify the number of months for which the user will actually pay (interest is calculated automatically)
 <br>
 for example:
 
