@@ -2,11 +2,11 @@ sudo wget https://github.com/QueenDekim/telegram-wireguard-vpn-bot/releases/down
 
 in file <code>config.json</code> added discounts
 
-<code>
+```
     "perc_1": 1,
     "perc_3": 3,
     "perc_6": 6,
-</code>
+```
 
 we specify the part of the amount that the user must pay (interest is calculated automatically)
 for example:
