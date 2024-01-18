@@ -12,7 +12,7 @@ we specify the part of the amount that the user must pay (interest is calculated
 for example:
 
 <code>config.json</code>
-<code>
+```
 {
     "admin_tg_id": 123456,
     "one_month_cost": 500,
@@ -24,6 +24,6 @@ for example:
     "tg_token": "",
     "tg_shop_token": ""
 }
-</code>
+```
 in tg bot:
 ![example](https://github.com/QueenDekim/telegram-wireguard-vpn-bot/raw/main/example.png)
