@@ -26,4 +26,5 @@ for example:
 }
 ```
 in tg bot:
+<br>
 ![example](https://github.com/QueenDekim/telegram-wireguard-vpn-bot/raw/main/example.png)
