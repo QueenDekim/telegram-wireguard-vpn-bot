@@ -371,7 +371,6 @@ async def Work_with_Message(m: types.Message):
                                        reply_markup=await buttons.admin_buttons(), parse_mode="HTML")
                 return
             for i in allusers:
-                # print(datetime.utcfromtimestamp(int(time.time())).strftime('%d.%m.%Y %H:%M'))
                 if int(i[2]) > int(time.time()):
                     if len(readymes) + len(
                             f"{i[6]} ({i[5]}|<code>{str(i[1])}</code>) - {datetime.utcfromtimestamp(int(i[2]) + CONFIG['UTC_time'] * 3600).strftime('%d.%m.%Y %H:%M')}\n\n") > 4090:
@@ -423,15 +422,6 @@ async def Work_with_Message(m: types.Message):
 
     if e.demojize(m.text) == "Продлить :money_bag:":
         payment_info = await user_dat.PaymentInfo()
-        # if not payment_info is None:
-        #     urltopay=CONFIG["url_redirect_to_pay"]+str((await p2p.check(bill_id=payment_info['bill_id'])).pay_url)[-36:]
-        #     Butt_payment = types.InlineKeyboardMarkup()
-        #     Butt_payment.add(
-        #         types.InlineKeyboardButton(e.emojize("Оплатить :money_bag:"), url=urltopay))
-        #     Butt_payment.add(
-        #         types.InlineKeyboardButton(e.emojize("Отменить платеж :cross_mark:"), callback_data=f'Cancel:'+str(user_dat.tgid)))
-        #     await bot.send_message(m.chat.id,"Оплатите прошлый счет или отмените его!",reply_markup=Butt_payment)
-        # else:
         if True:
             Butt_payment = types.InlineKeyboardMarkup()
             Butt_payment.add(
@@ -443,7 +433,6 @@ async def Work_with_Message(m: types.Message):
             Butt_payment.add(
                 types.InlineKeyboardButton(e.emojize(f"6 мес. 📅 - {str(round(CONFIG['perc_6'] * CONFIG['one_month_cost']))} руб. Выгода {round(((6 - CONFIG['perc_6']) / 6) * 100)}%"),
                                            callback_data="BuyMonth:6"))
-            # await bot.send_message(m.chat.id, "<b>Оплатить можно с помощью Банковской карты или Qiwi кошелька!</b>\n\nВыберите на сколько месяцев хотите приобрести подписку:", reply_markup=Butt_payment,parse_mode="HTML")
             await bot.send_message(m.chat.id,
                                    "<b>Оплатить можно с помощью Банковской карты!</b>\n\nВыберите на сколько месяцев хотите приобрести подписку:",
                                    reply_markup=Butt_payment, parse_mode="HTML")
@@ -454,8 +443,6 @@ async def Work_with_Message(m: types.Message):
             Butt_how_to.add(
                 types.InlineKeyboardButton(e.emojize("Подробнее как подключить"),
                                            url="https://telegra.ph/Gajd-na-ustanovku-11-27"))
-            # Butt_how_to.add(
-            #      types.InlineKeyboardButton(e.emojize("Инструкция для Android"), url="https://telegra.ph/Gajd-na-ustanovku-WireGuard-Android-01-16"))
             Butt_how_to.add(
                 types.InlineKeyboardButton(e.emojize("Проверить VPN"),
                                            url="https://2ip.ru/"))
@@ -473,10 +460,6 @@ async def Buy_month(call: types.CallbackQuery):
     payment_info = await user_dat.PaymentInfo()
     if payment_info is None:
         Month_count = int(str(call.data).split(":")[1])
-        # new_bill = await p2p.bill(amount=Month_count*CONFIG['one_month_cost'], lifetime=45, theme_code=CONFIG['qiwi_theme_code'],
-        #                     comment=f"Оплата VPN на {Month_count} мес. для пользователя {call.from_user.id}")
-        # urltopay=CONFIG["url_redirect_to_pay"]+str(new_bill.pay_url)[-36:]
-        # bill_id = new_bill.bill_id
         await bot.delete_message(call.message.chat.id, call.message.id)
         if(Month_count == 1):
             count = CONFIG['perc_1']
@@ -488,30 +471,7 @@ async def Buy_month(call: types.CallbackQuery):
                                         currency="RUB",prices=[
                     types.LabeledPrice(f"VPN на {str(Month_count)} мес.  Выгода {round(((Month_count - count) / Month_count) * 100)}%", round(count * CONFIG['one_month_cost'] * 100))],
                                         provider_token=CONFIG["tg_shop_token"])
-        # await user_dat.NewPay(bill.,Month_count*CONFIG['one_month_cost'],Month_count*2592000,call.message.id)
-
-        # Butt_payment = types.InlineKeyboardMarkup()
-        # Butt_payment.add(
-        #     types.InlineKeyboardButton(e.emojize("Оплатить :money_bag:"), url=urltopay))
-        # Butt_payment.add(
-        #     types.InlineKeyboardButton(e.emojize("Отменить платеж :cross_mark:"), callback_data=f'Cancel:' + str(user_dat.tgid)))
-        # await bot.edit_message_text(chat_id=call.from_user.id,message_id=call.message.id,text=f"<b>Оплата: VPN на {str(Month_count)} мес.\n\nСумма оплаты: <code>{str(Month_count*CONFIG['one_month_cost'])} ₽</code></b>\nОплатите счет в течение 45 минут!",parse_mode="HTML",reply_markup=Butt_payment)
-
     await bot.answer_callback_query(call.id)
-
-
-# @bot.callback_query_handler(func=lambda c: 'Cancel:' in c.data)
-# async def Cancel_payment(call: types.CallbackQuery):
-#     user_dat = await User.GetInfo(call.from_user.id)
-#     payment_info = await user_dat.PaymentInfo()
-#     if not payment_info is None:
-#         await user_dat.CancelPayment()
-#         await p2p.reject(bill_id=payment_info['bill_id'])
-#         await bot.edit_message_text(chat_id=call.from_user.id,message_id=call.message.id,text="Платеж отменен!",reply_markup=None)
-#
-#
-#     await bot.answer_callback_query(call.id)
-
 
 async def AddTimeToUser(tgid, timetoadd):
     userdat = await User.GetInfo(tgid)
@@ -580,7 +540,6 @@ async def DeleteUserYesOrNo(call: types.CallbackQuery):
 
 @bot.pre_checkout_query_handler(func=lambda query: True)
 async def checkout(pre_checkout_query):
-    # (pre_checkout_query)
     month = int(str(pre_checkout_query.invoice_payload).split(":")[1])
     if(month == 1):
             count = CONFIG['perc_1']
@@ -617,73 +576,6 @@ async def got_payment(m):
 
 
 bot.add_custom_filter(asyncio_filters.StateFilter(bot))
-
-
-# def checkPayments():
-#     while True:
-#         try:
-#             time.sleep(5)
-#             db = sqlite3.connect(DBCONNECT)
-#             db.row_factory = sqlite3.Row
-#             c = db.execute(f"SELECT * FROM payments")
-#             log = c.fetchall()
-#             c.close()
-#             db.close()
-#
-#             if len(log)>0:
-#                 p2pCheck = QiwiP2P(auth_key=QIWI_PRIV_KEY)
-#                 for i in log:
-#                     status = p2pCheck.check(bill_id=i["bill_id"]).status
-#                     if status=="PAID":
-#                         BotChecking = TeleBot(BOTAPIKEY)
-#
-#                         db = sqlite3.connect(DBCONNECT)
-#                         db.execute(f"DELETE FROM payments where tgid=?",
-#                                    (i['tgid'],))
-#                         userdat=db.execute(f"SELECT * FROM userss WHERE tgid=?",(i['tgid'],)).fetchone()
-#                         if int(userdat[2])<int(time.time()):
-#                             passdat=int(time.time())+i["time_to_add"]
-#                             db.execute(f"UPDATE userss SET subscription = ?, banned=false, notion_oneday=false where tgid=?",(str(int(time.time())+i["time_to_add"]),i['tgid']))
-#                             #check = subprocess.call(f'./addusertovpn.sh {str(i["tgid"])}', shell=True)
-#                             BotChecking.send_message(i['tgid'],e.emojize('Данны для входа были обновлены, скачайте новый файл авторизации через раздел "Как подключить :gear:"'))
-#                         else:
-#                             passdat = int(userdat[2]) + i["time_to_add"]
-#                             db.execute(f"UPDATE userss SET subscription = ?, notion_oneday=false where tgid=?",
-#                                        (str(int(userdat[2])+i["time_to_add"]), i['tgid']))
-#                         db.commit()
-#
-#
-#                         Butt_main = types.ReplyKeyboardMarkup(resize_keyboard=True)
-#                         dateto = datetime.utcfromtimestamp(int(passdat) +CONFIG['UTC_time']*3600).strftime('%d.%m.%Y %H:%M')
-#                         timenow = int(time.time())
-#                         if int(passdat) >= timenow:
-#                             Butt_main.add(
-#                                 types.KeyboardButton(e.emojize(f":green_circle: До: {dateto} МСК:green_circle:")))
-#
-#                         Butt_main.add(types.KeyboardButton(e.emojize(f"Продлить :money_bag:")),
-#                                       types.KeyboardButton(e.emojize(f"Как подключить :gear:")))
-#
-#                         BotChecking.edit_message_reply_markup(chat_id=i['tgid'],message_id=i['mesid'],reply_markup=None)
-#                         BotChecking.send_message(i['tgid'],
-#                                                  texts_for_bot["success_pay_message"],
-#                                                  reply_markup=Butt_main)
-#
-#
-#                     if status == "EXPIRED":
-#                         BotChecking = TeleBot(BOTAPIKEY)
-#                         BotChecking.edit_message_text(chat_id=i['tgid'], message_id=i['mesid'],text="Платеж просрочен.",
-#                                                               reply_markup=None)
-#                         db = sqlite3.connect(DBCONNECT)
-#                         db.execute(f"DELETE FROM payments where tgid=?",
-#                                    (i['tgid'],))
-#                         db.commit()
-#
-#
-#
-#
-#         except:
-#             pass
-
 
 def checkTime():
     while True:
@@ -724,24 +616,24 @@ def checkTime():
                     BotChecking.send_message(i['tgid'], texts_for_bot["alert_to_renew_sub"], parse_mode="HTML")
 
                 # Дарим бесплатную подписку на 7 дней если он висит 3 дня как неактивный и не ливнул
-                if remained_time <= 259200 and i['trial_continue'] == 0:
-                    BotChecking = TeleBot(BOTAPIKEY)
-                    timetoadd = 7 * 60 * 60 * 24
-                    db = sqlite3.connect(DBCONNECT)
-                    db.execute(f"UPDATE userss SET trial_continue=1 where tgid=?", (i[1],))
-                    db.execute(
-                        f"Update userss set subscription = ?, banned=false, notion_oneday=false where tgid=?",
-                        (str(int(time.time()) + timetoadd), i[1]))
-                    db.commit()
-                    db.close()
-                    subprocess.call(f'./addusertovpn.sh {str(i[1])}', shell=True)
+                # if remained_time <= 259200 and i['trial_continue'] == 0:
+                #     BotChecking = TeleBot(BOTAPIKEY)
+                #     timetoadd = 7 * 60 * 60 * 24
+                #     db = sqlite3.connect(DBCONNECT)
+                #     db.execute(f"UPDATE userss SET trial_continue=1 where tgid=?", (i[1],))
+                #     db.execute(
+                #         f"Update userss set subscription = ?, banned=false, notion_oneday=false where tgid=?",
+                #         (str(int(time.time()) + timetoadd), i[1]))
+                #     db.commit()
+                #     db.close()
+                #     subprocess.call(f'./addusertovpn.sh {str(i[1])}', shell=True)
 
-                    Butt_main = types.ReplyKeyboardMarkup(resize_keyboard=True)
-                    Butt_main.add(types.KeyboardButton(e.emojize(f"Продлить :money_bag:")),
-                                  types.KeyboardButton(e.emojize(f"Как подключить :gear:")))
-                    BotChecking.send_message(i['tgid'],
-                                             e.emojize(texts_for_bot["alert_to_extend_sub"]),
-                                             reply_markup=Butt_main, parse_mode="HTML")
+                #     Butt_main = types.ReplyKeyboardMarkup(resize_keyboard=True)
+                #     Butt_main.add(types.KeyboardButton(e.emojize(f"Продлить :money_bag:")),
+                #                   types.KeyboardButton(e.emojize(f"Как подключить :gear:")))
+                #     BotChecking.send_message(i['tgid'],
+                #                              e.emojize(texts_for_bot["alert_to_extend_sub"]),
+                #                              reply_markup=Butt_main, parse_mode="HTML")
 
         except Exception as err:
             print(err)
@@ -749,8 +641,6 @@ def checkTime():
 
 
 if __name__ == '__main__':
-    # threadPayments = threading.Thread(target=checkPayments, name="payments")
-    # threadPayments.start()
 
     threadcheckTime = threading.Thread(target=checkTime, name="checkTime1")
     threadcheckTime.start()
