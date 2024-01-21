@@ -38,12 +38,6 @@ BOTAPIKEY = CONFIG["tg_token"]
 
 bot = AsyncTeleBot(CONFIG["tg_token"], state_storage=StateMemoryStorage())
 
-
-# QIWI_PRIV_KEY = CONFIG["qiwi_key"]
-
-# p2p = AioQiwiP2P(auth_key=QIWI_PRIV_KEY,alt="zxcvbnm.online")
-
-
 class MyStates(StatesGroup):
     findUserViaId = State()
     editUser = State()
