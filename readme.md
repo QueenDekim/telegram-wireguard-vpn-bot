@@ -58,4 +58,4 @@ The text of some messages is specified in <code>texts.json</code>
 }
 ```
 ---
-![Discord](https://img.shields.io/discord/1003119748382466049?label=Ascento%20TEAM%20Discord) <br> ![Static Badge](https://img.shields.io/badge/Telegram-%40QueenDek1m-blue?link=https%3A%2F%2Ft.me%2FQueenDek1m) ![Static Badge](https://img.shields.io/badge/Discord-from__russia__with__love-purple)
+![Discord](https://img.shields.io/discord/1003119748382466049?label=Ascento%20TEAM%20Discord&link=https%3A%2F%2Fdiscord.gg%2F7kC4dVkRVp)<br> ![Static Badge](https://img.shields.io/badge/Telegram-%40QueenDek1m-blue?link=https%3A%2F%2Ft.me%2FQueenDek1m) ![Static Badge](https://img.shields.io/badge/Discord-from__russia__with__love-purple)
