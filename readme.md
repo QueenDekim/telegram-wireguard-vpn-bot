@@ -4,7 +4,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/QueenDekim/telegram-wireguard-vpn-bot)
 
 ---
-###Quick installation:
+##Quick installation:
 ```bash
 sudo wget https://github.com/QueenDekim/telegram-wireguard-vpn-bot/releases/download/release/Wireguard-installer-with-Adminpanel.sh && chmod 774 Wireguard-installer-with-Adminpanel.sh && ./Wireguard-installer-with-Adminpanel.sh
 ```
@@ -14,7 +14,7 @@ sudo wget https://github.com/QueenDekim/telegram-wireguard-vpn-bot/releases/down
 
 ---
 
-###In file <code>config.json</code> added discounts
+##In file <code>config.json</code> added discounts
 
 ```Json
 {   
@@ -50,7 +50,7 @@ In telegram bot:<br>
 
 ---
 
-###The text of some messages is specified in <code>texts.json</code>
+##The text of some messages is specified in <code>texts.json</code>
 
 ```Json
 {
