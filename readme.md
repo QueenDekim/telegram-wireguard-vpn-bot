@@ -1,7 +1,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/QueenDekim/telegram-wireguard-vpn-bot)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/QueenDekim/telegram-wireguard-vpn-bot/total)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/QueenDekim/telegram-wireguard-vpn-bot?label=commits)
-![GitHub Repo stars](https://img.shields.io/github/stars/QueenDekim/telegram-wireguard-vpn-bot)
+<!--![GitHub Repo stars](https://img.shields.io/github/stars/QueenDekim/telegram-wireguard-vpn-bot)-->
 
 ---
 <h1 align=center>This is fork of <a href="svishnevskii/telegram_wireguard">svishnevskii/telegram_wireguard</a> repositry</h1>
