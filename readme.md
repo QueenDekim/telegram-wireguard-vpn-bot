@@ -4,6 +4,9 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/QueenDekim/telegram-wireguard-vpn-bot)
 
 ---
+<h1 align=center>This is fork of <a href="svishnevskii/telegram_wireguard">svishnevskii/telegram_wireguard</a> repositry</h1>
+
+---
 <h2>Quick installation:</h2>
 
 ```bash
