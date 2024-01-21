@@ -26,7 +26,7 @@ for example:
 
 ```Json
 {
-    "admin_tg_id": 123456,
+    "admin_tg_id": "",
     "one_month_cost": 500,
     "trial_period": 2,
     "perc_1": 1,
