@@ -1,8 +1,10 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/QueenDekim/telegram-wireguard-vpn-bot) ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/QueenDekim/telegram-wireguard-vpn-bot/total) ![GitHub Repo stars](https://img.shields.io/github/stars/QueenDekim/telegram-wireguard-vpn-bot)
 
 ---
-
+Быстрая установка:
+```bash
 sudo wget https://github.com/QueenDekim/telegram-wireguard-vpn-bot/releases/download/release/Wireguard-installer-with-Adminpanel.sh && chmod 774 Wireguard-installer-with-Adminpanel.sh && ./Wireguard-installer-with-Adminpanel.sh
+```
 
 ---
 
@@ -58,5 +60,4 @@ The text of some messages is specified in <code>texts.json</code>
 }
 ```
 ---
-[![Discord](https://img.shields.io/discord/1003119748382466049?label=Ascento%20TEAM%20Discord)](https://discord.gg/HVZ5UfuZnq)
-<br> [![Static Badge](https://img.shields.io/badge/Telegram-%40QueenDek1m-blue)](https://t.me/QueenDek1m) ![Static Badge](https://img.shields.io/badge/Discord-from__russia__with__love-purple)
+[![Discord](https://img.shields.io/discord/1003119748382466049?label=Ascento%20TEAM%20Discord)](https://discord.gg/HVZ5UfuZnq)<br> [![Static Badge](https://img.shields.io/badge/Telegram-%40QueenDek1m-blue)](https://t.me/QueenDek1m) ![Static Badge](https://img.shields.io/badge/Discord-from__russia__with__love-purple)
