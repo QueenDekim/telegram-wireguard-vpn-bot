@@ -67,3 +67,10 @@ In telegram bot:<br>
 ```
 ---
 [![Discord](https://img.shields.io/discord/1003119748382466049?label=Ascento%20TEAM%20Discord)](https://discord.gg/HVZ5UfuZnq)<br> [![Static Badge](https://img.shields.io/badge/Telegram-%40QueenDek1m-blue)](https://t.me/QueenDek1m) ![Static Badge](https://img.shields.io/badge/Discord-from__russia__with__love-purple)
+
+|                                                links                                                                         |                                 description                                         |
+|:----------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------:|
+|[![Discord](https://img.shields.io/discord/1003119748382466049?label=Ascento%20TEAM%20Discord)](https://discord.gg/HVZ5UfuZnq)|                                Discord server                                       |
+|![Static Badge](https://img.shields.io/badge/Discord-from__russia__with__love-purple)                                         |                                My Discord tag                                       |
+|[![Static Badge](https://img.shields.io/badge/Telegram-%40QueenDek1m-blue)](https://t.me/QueenDek1m)                          |                                  My telegram                                        |
+|[![Static Badge](https://img.shields.io/badge/Telegram-%40Dekim_vpn_bot-blue)](https://t.me/Dekim_vpn_bot)                    |                     My telegram bot for example (fully operational)                 |
