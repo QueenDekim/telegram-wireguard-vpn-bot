@@ -15,6 +15,25 @@ sudo wget https://github.com/QueenDekim/telegram-wireguard-vpn-bot/releases/down
 - after configuring the wg, a choice will appear: `Hotite li ustanovit' srazu Telegram bota(1 - Da, 0 - Net):` We agree (press 1)
 - Then we specify the `Telegram API` of the bot, which we received from **BotFather** when creating the bot, `YCassa API`, which we also received from **BotFather** when setting up the Payment of the bot and `Telegram-id Admin` - your telegram account ID
 
+<h3>Сhecking the operation of the service</h3>
+```bash
+sudo systemctl status befutureAdmin
+```
+
+<h3>Start</h3>
+```bash
+sudo systemctl start befutureAdmin
+```
+
+<h3>Stop</h3>
+```bash
+sudo systemctl stop befutureAdmin
+```
+
+<h3>Restart</h3>
+```bash
+sudo systemctl restart befutureAdmin
+```
 
 ---
 
