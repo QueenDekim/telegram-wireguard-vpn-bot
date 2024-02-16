@@ -77,6 +77,54 @@ In telegram bot:<br>
 
 ---
 
+<h2>Аn admin function has been added that sends an update notification to all users</h2>
+
+in `main.py` file:
+
+```python
+if e.demojize(m.text) == "Уведомление об обновлении":
+    db = sqlite3.connect(DBCONNECT)
+    db.row_factory = sqlite3.Row
+    c = db.execute(f"SELECT * FROM userss where username <> '@None'")
+    log = c.fetchall()
+    c.close()
+    db.close()
+    BotChecking = TeleBot(BOTAPIKEY)
+    countSended = 0
+    countBlocked = 0
+    for i in log:
+        try: 
+            countSended += 1
+
+            Butt_main = types.ReplyKeyboardMarkup(resize_keyboard=True)
+            Butt_main.add(types.KeyboardButton(e.emojize(f"Продлить :money_bag:")),
+                        types.KeyboardButton(e.emojize(f"Как подключить :gear:")))
+            BotChecking.send_message(i['tgid'],
+                                    texts_for_bot["alert_to_update"],
+                                    reply_markup=Butt_main, parse_mode="HTML")
+        except:
+            countSended -= 1
+            countBlocked += 1
+            pass
+        
+    BotChecking.send_message(CONFIG['admin_tg_id'],
+                                f"Сообщение отправлено {countSended} пользователям. {countBlocked} пользователей заблокировало бота", parse_mode="HTML")
+
+```
+
+in `buttons.py` file:
+
+```python
+Butt_admin.add(types.KeyboardButton(e.emojize(f"Уведомление об обновлении"))) 
+```
+in `texts.json` file:
+
+```json
+{
+  "alert_to_update":"Выполнено обновление бота, проверьте, пожалуйста, функциональность бота.\nЕсли после этого сообщения у вас пропал таймер действия подписки, напишите /start\n\nО найденых ошибках просьба сообщить @QueenDek1m",
+}
+```
+
 <h2>The text of some messages is specified in <code>texts.json</code></h2>
 
 ```Json
