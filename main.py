@@ -343,24 +343,58 @@ async def Work_with_Message(m: types.Message):
             db.close()
             BotChecking = TeleBot(BOTAPIKEY)
             timetoadd = 7 * 60 * 60 * 24
-            countAdded = 0
+            countSended = 0
             db = sqlite3.connect(DBCONNECT)
             for i in log:
-                countAdded += 1
-                db.execute(f"Update userss set subscription = ?, banned=false, notion_oneday=false where tgid=?",
-                           (str(int(time.time()) + timetoadd), i["tgid"]))
-                db.commit()
-                db.close()
-                subprocess.call(f'./addusertovpn.sh {str(i["tgid"])}', shell=True)
+                try:
+                    countSended += 1
+                    db.execute(f"Update userss set subscription = ?, banned=false, notion_oneday=false where tgid=?",
+                            (str(int(time.time()) + timetoadd), i["tgid"]))
+                    db.commit()
+                    db.close()
+                    subprocess.call(f'./addusertovpn.sh {str(i["tgid"])}', shell=True)
 
-                Butt_main = types.ReplyKeyboardMarkup(resize_keyboard=True)
-                Butt_main.add(types.KeyboardButton(e.emojize(f"Продлить :money_bag:")),
-                              types.KeyboardButton(e.emojize(f"Как подключить :gear:")))
-                BotChecking.send_message(i['tgid'],
-                                         texts_for_bot["alert_to_extend_sub"],
-                                         reply_markup=Butt_main, parse_mode="HTML")
-                BotChecking.send_message(CONFIG['admin_tg_id'],
-                                         f"Добавлен пробный период {countAdded} пользователям", parse_mode="HTML")
+                    Butt_main = types.ReplyKeyboardMarkup(resize_keyboard=True)
+                    Butt_main.add(types.KeyboardButton(e.emojize(f"Продлить :money_bag:")),
+                                types.KeyboardButton(e.emojize(f"Как подключить :gear:")))
+                    BotChecking.send_message(i['tgid'],
+                                            texts_for_bot["alert_to_extend_sub"],
+                                            reply_markup=Butt_main, parse_mode="HTML")
+                except:
+                    countSended -= 1
+                    countBlocked += 1
+                    pass
+            BotChecking.send_message(CONFIG['admin_tg_id'],
+                                        f"Добавлен пробный период {countSended} пользователям. {countBlocked} пользователей заблокировало бота", parse_mode="HTML")
+        
+        if e.demojize(m.text) == "Уведомление об обновлении":
+            db = sqlite3.connect(DBCONNECT)
+            db.row_factory = sqlite3.Row
+            c = db.execute(f"SELECT * FROM userss where username <> '@None'")
+            log = c.fetchall()
+            c.close()
+            db.close()
+            BotChecking = TeleBot(BOTAPIKEY)
+            countSended = 0
+            countBlocked = 0
+            for i in log:
+                try: 
+                    countSended += 1
+
+                    Butt_main = types.ReplyKeyboardMarkup(resize_keyboard=True)
+                    Butt_main.add(types.KeyboardButton(e.emojize(f"Продлить :money_bag:")),
+                                types.KeyboardButton(e.emojize(f"Как подключить :gear:")))
+                    BotChecking.send_message(i['tgid'],
+                                            texts_for_bot["alert_to_update"],
+                                            reply_markup=Butt_main, parse_mode="HTML")
+                except:
+                    countSended -= 1
+                    countBlocked += 1
+                    pass
+
+            BotChecking.send_message(CONFIG['admin_tg_id'],
+                                        f"Сообщение отправлено {countSended} пользователям. {countBlocked} пользователей заблокировало бота", parse_mode="HTML")
+
 
         if e.demojize(m.text) == "Пользователей с подпиской":
             allusers = await user_dat.GetAllUsersWithSub()
