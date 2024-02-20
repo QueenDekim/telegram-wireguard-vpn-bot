@@ -105,7 +105,6 @@ if e.demojize(m.text) == "Уведомление об обновлении":
         except:
             countSended -= 1
             countBlocked += 1
-            pass
         
     BotChecking.send_message(CONFIG['admin_tg_id'],
                                 f"Сообщение отправлено {countSended} пользователям. {countBlocked} пользователей заблокировало бота", parse_mode="HTML")
