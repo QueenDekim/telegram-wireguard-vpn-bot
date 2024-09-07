@@ -45,11 +45,11 @@ sudo systemctl restart befutureAdmin
 
 ```Json
 {   
-    "...":"...:
+    "...":"...",
     "perc_1": 1,
     "perc_3": 3,
     "perc_6": 6,
-    "...":"...:
+    "...":"...",
 }
 ```
 
