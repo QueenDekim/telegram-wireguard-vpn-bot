@@ -148,6 +148,4 @@ in `texts.json` file:
 
 |                                                links                                                                         |                                 description                                         |
 |:----------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------:|
-|[![Static Badge](https://img.shields.io/badge/Discord-from__russia__with__love-purple)](https://about:blank)                  |                                My Discord tag                                       |
-|[![Static Badge](https://img.shields.io/badge/Telegram-%40QueenDek1m-blue)](https://t.me/QueenDek1m)                          |                                  My telegram                                        |
 |[![Static Badge](https://img.shields.io/badge/Telegram-%40Dekim__vpn__bot-blue)](https://t.me/Dekim_vpn_bot)                  |                     My telegram bot for example (fully operational)                 |
