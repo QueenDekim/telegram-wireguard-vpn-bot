@@ -525,6 +525,8 @@ async def Buy_month(call: types.CallbackQuery):
             prices=[
                 types.LabeledPrice(f"VPN на {str(Month_count)} мес.  Выгода {round(((Month_count - count) / Month_count) * 100)}%", round(count * CONFIG['one_month_cost'] * 100))],
             provider_token=CONFIG["tg_shop_token"],
+            need_email=True,
+            send_email_to_provider=True,
             provider_data=json.dumps(provider_data_wo_email)
     await bot.answer_callback_query(call.id)
 
