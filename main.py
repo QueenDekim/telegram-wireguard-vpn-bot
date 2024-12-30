@@ -501,10 +501,31 @@ async def Buy_month(call: types.CallbackQuery):
             count = CONFIG['perc_3']
         if(Month_count == 6):
             count = CONFIG['perc_6']
-        bill = await bot.send_invoice(call.message.chat.id, f"Оплата VPN", f"VPN на {str(Month_count)} мес. Выгода {round(((Month_count - count) / Month_count) * 100)}%", call.data,
-                                        currency="RUB",prices=[
-                    types.LabeledPrice(f"VPN на {str(Month_count)} мес.  Выгода {round(((Month_count - count) / Month_count) * 100)}%", round(count * CONFIG['one_month_cost'] * 100))],
-                                        provider_token=CONFIG["tg_shop_token"])
+
+        provider_data_wo_email = {
+            "receipt": {
+                "items": [{
+                    "description": f"VPN на {str(Month_count)} мес.",
+                    "quantity": f"1.00",
+                    "amount": {
+                        "value": f"{Month_count * CONFIG['one_month_cost']}",
+                        "currency": "RUB"
+                    },
+                    "vat_code": 1
+                }]
+            }
+        }
+        
+        bill = await bot.send_invoice(
+            call.message.chat.id,
+            f"Оплата VPN",
+            f"VPN на {str(Month_count)} мес. Выгода {round(((Month_count - count) / Month_count) * 100)}%",
+            call.data,
+            currency="RUB",
+            prices=[
+                types.LabeledPrice(f"VPN на {str(Month_count)} мес.  Выгода {round(((Month_count - count) / Month_count) * 100)}%", round(count * CONFIG['one_month_cost'] * 100))],
+            provider_token=CONFIG["tg_shop_token"],
+            provider_data=json.dumps(provider_data_wo_email)
     await bot.answer_callback_query(call.id)
 
 async def AddTimeToUser(tgid, timetoadd):
