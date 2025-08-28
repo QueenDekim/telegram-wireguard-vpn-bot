@@ -4,6 +4,8 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/QueenDekim/telegram-wireguard-vpn-bot)
 
 ---
+<h1 align=center>[DEPRECATED]</h1>
+
 <h1 align=center>Recommended Ubuntu (Debian) version - from 14.04 to 22.04</h1>
 
 on versions higher than 23, installation may not complete correctly
