@@ -4,7 +4,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/QueenDekim/telegram-wireguard-vpn-bot)
 
 ---
-<h1 align=center>[DEPRECATED]</h1>
+<h1 align=center>[DEPRECATED] - <a href="https://github.com/QueenDekim/XRay-bot" target="_blank">ACTUAL BOT REPOSITORY</a></h1>
 
 <h1 align=center>Recommended Ubuntu (Debian) version - from 14.04 to 22.04</h1>
 
